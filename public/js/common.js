@@ -1,4 +1,4 @@
-define(['jquery','cookie'],function ($) {
+define(['jquery','template','cookie'],function ($,template) {
 	NProgress.start();
 	NProgress.done();
 	
@@ -25,7 +25,9 @@ define(['jquery','cookie'],function ($) {
 	
 	//检测是否登陆，没登陆信息直接login页面
 	var flag=$.cookie('PHPSESSID')
-	if (!flag) {
+	//pathname返回的是域名后的路径名字，不返回?后的参数
+	//当无登陆和login页面之外时
+	if (!flag&&location.pathname!='/main/login') {
 		location.href='/main/login'
 	}
 	
@@ -33,7 +35,12 @@ define(['jquery','cookie'],function ($) {
 	var loginInfo=$.cookie('loginInfo')
 	loginInfo=loginInfo&&JSON.parse(loginInfo)
 	// console.log(loginInfo)
-	$('.aside .profile img').attr('src',loginInfo.tc_avatar)
-	$('.aside .profile h4').html(loginInfo.tc_name)
+	
+
+	var tpl = '<div class="avatar img-circle"><img src="{{tc_avatar}}"></div><h4>{{tc_name}}</h4>'
+	var html = template.render(tpl,loginInfo)
+	$('.aside .profile').html(html)
+	// $('.aside .profile img').attr('src',loginInfo.tc_avatar)
+	// $('.aside .profile h4').html(loginInfo.tc_name)
 })
 
