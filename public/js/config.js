@@ -6,5 +6,6 @@ require.config({
 		common:'../js/common',
 		login:'../js/login',
 		template:'artTemplate/template-web',
+		teacherlist:'../js/teacher-list'
 	}
 })
