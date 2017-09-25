@@ -7,7 +7,9 @@ require.config({
 		login:'../js/login',
 		template:'artTemplate/template-web',
 		teacherlist:'../js/teacher-list',
-		bootstrap:'bootstrap/js/bootstrap'
+		bootstrap:'bootstrap/js/bootstrap',
+		teacheradd:'../js/teacher-add',
+		util:'../js/util'
 	},
 	shim:{
 		bootstrap:{
